@@ -173,15 +173,8 @@ const Index = () => {
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
                     className="group relative p-8 rounded-2xl bg-card border border-border hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-colors duration-500 h-full"
                   >
-                    <motion.div
-                      initial={{ opacity: 0.2 }}
-                      whileHover={{ opacity: 0.4, scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute top-6 right-6 text-[4rem] font-heading font-bold text-border leading-none select-none"
-                    >
-                      {String(i + 1).padStart(2, '0')}
-                    </motion.div>
-                    <div className="relative z-10 pt-8">
+                    <div className="w-2 h-2 rounded-full bg-gradient-brand mb-6 group-hover:scale-150 transition-transform duration-500" />
+                    <div className="relative z-10">
                       <h3 className="text-lg font-heading font-semibold text-foreground mb-3">{item.label}</h3>
                       <p className="text-sm font-body text-muted-foreground leading-relaxed">{item.desc}</p>
                     </div>
