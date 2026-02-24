@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
-import havenzLogo from "@/assets/havenz-logo-white.png";
+import havenzLogo from "@/assets/havenz-logo-clean.png";
 
 const offices = [
   {
@@ -28,7 +28,7 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
           {/* Brand column */}
           <div className="lg:col-span-4">
-            <img src={havenzLogo} alt="Havenz Smart Communities" className="h-12 w-auto mb-6 mix-blend-lighten" />
+            <img src={havenzLogo} alt="Havenz Smart Communities" className="h-12 w-auto mb-6" />
             <p className="text-sm font-body text-primary-foreground/50 leading-relaxed max-w-xs">
               Pioneering the next generation of smart living — communities that balance energy, data, food, and job security.
             </p>
