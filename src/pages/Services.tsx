@@ -1,11 +1,24 @@
+import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2 } from "lucide-react";
 
-const bulletCol1 = [
+const capabilities = [
+  "All Classes of Real Estate",
+  "Infrastructure Development",
+  "Smart Community Development",
+  "Industrial Development",
+  "Commercial Retail Development",
+  "Multi-Family Developments",
+  "Land Acquisitions",
+  "Vision & Master Planning",
+  "Joint Ventures",
+];
+
+const principles = [
   "Industry-leading technology and data",
   "Disruptive real estate innovation",
   "ESG+R commitment and excellence",
@@ -14,64 +27,31 @@ const bulletCol1 = [
   "Flexible business models",
   "Forward-thinking projects",
   "Collaborative success",
-  "Innovative sustainability practices",
-];
-
-const bulletCol2 = [
-  "All Classes of Real Estate",
-  "Infrastructure Development",
-  "Smart Community Development",
-  "Industrial Development",
-  "(CRU) Commercial Retail Development",
-  "Multi-Family Developments",
-  "Land Acquisitions",
-  "Vision & Master Planning",
-  "(JV) Joint Ventures",
 ];
 
 const serviceDetails = [
   {
-    title: "Industry-leading technology and data",
-    description: "Utilize cutting-edge technology and data analytics to provide unparalleled insights and solutions for smart community development. Our tech-driven approach ensures efficiency, sustainability, and optimal performance in all our projects.",
+    title: "Smart Communities",
+    desc: "Template-based, data-driven residential and mixed-use developments designed for resilience, sustainability, and AI-powered operations.",
   },
   {
-    title: "Disruptive real estate innovation",
-    description: "Redefine the real estate landscape with groundbreaking innovations. By integrating advanced technologies and creative strategies, we drive significant value and transform traditional real estate paradigms.",
+    title: "Green Energy Infrastructure",
+    desc: "Deploying renewable energy solutions through our Energy Haven partnership — solar, wind, and clean power generation at scale.",
   },
   {
-    title: "ESG+R commitment and excellence",
-    description: "Exemplify our dedication to Environmental, Social, and Governance (ESG) standards plus Resilience. We integrate ESG principles into every aspect of our operations, ensuring sustainable and socially responsible developments.",
+    title: "ESG+R Compliance",
+    desc: "Comprehensive environmental, social, governance, and resilience frameworks embedded into every project from day one.",
   },
   {
-    title: "Aligned with emissions goals",
-    description: "Commit to meeting and exceeding emissions reduction targets. Our projects are designed to minimize carbon footprints and contribute to global climate goals, ensuring a cleaner, greener future.",
-  },
-  {
-    title: "Reliable Net Zero energy",
-    description: "Achieve net-zero energy consumption by integrating renewable energy sources and energy-efficient designs. Our developments are built to produce as much energy as they consume, promoting environmental sustainability.",
-  },
-  {
-    title: "Flexible business models",
-    description: "Offer adaptable and innovative business models that cater to diverse market needs. Our flexible approach allows us to pivot and respond effectively to changing economic and environmental landscapes.",
+    title: "Sovereign AI & Data",
+    desc: "Leveraging sovereign AI positioning and advanced analytics to optimize community design, operations, and long-term sustainability.",
   },
 ];
 
 const scopeItems = [
-  {
-    scope: "Scope 1",
-    title: "Direct Emissions",
-    items: ["On-site energy management", "Fleet optimization", "Facilities with net-zero targets"],
-  },
-  {
-    scope: "Scope 2",
-    title: "Indirect Energy",
-    items: ["Renewable energy procurement", "Green power purchase agreements", "Grid-connected solar & wind"],
-  },
-  {
-    scope: "Scope 3",
-    title: "Value Chain",
-    items: ["Supply chain optimization", "Sustainable materials sourcing", "Community impact measurement"],
-  },
+  { scope: "Scope 1", title: "Direct Emissions", items: ["On-site energy management", "Fleet optimization", "Net-zero facility targets"] },
+  { scope: "Scope 2", title: "Indirect Energy", items: ["Renewable procurement", "Green power agreements", "Grid-connected solar & wind"] },
+  { scope: "Scope 3", title: "Value Chain", items: ["Supply chain optimization", "Sustainable materials", "Community impact metrics"] },
 ];
 
 const Services = () => {
@@ -79,67 +59,88 @@ const Services = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Banner */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-end bg-havenz-navy overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-havenz-dark/50 to-havenz-navy/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-havenz-teal/5" />
-        <div className="relative z-10 mx-auto max-w-7xl px-6 pb-12 lg:px-8 w-full">
-          <p className="text-sm font-body uppercase tracking-[0.3em] text-havenz-teal mb-2">Services</p>
+      {/* Hero */}
+      <section className="relative pt-16 min-h-[60vh] flex items-center bg-havenz-navy overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(173_58%_39%_/_0.08)_0%,_transparent_60%)]" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'linear-gradient(hsl(173 58% 39% / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(173 58% 39% / 0.3) 1px, transparent 1px)',
+          backgroundSize: '80px 80px'
+        }} />
+        <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-xs font-body uppercase tracking-[0.25em] text-havenz-teal mb-5">Services</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-[1.1] max-w-3xl">
+              What We{" "}
+              <span className="text-gradient">Build</span>
+            </h1>
+            <p className="mt-6 text-lg text-primary-foreground/50 font-body max-w-2xl leading-relaxed">
+              From smart communities to green energy infrastructure — integrated development solutions across all asset classes.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Service Overview */}
+      {/* Overview - Two columns */}
       <section className="section-padding bg-background">
         <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-            <ScrollReveal>
-              <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-                Our Services
-              </h1>
-              <div className="w-16 h-1 bg-accent mt-6" />
-            </ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-5">
+              <ScrollReveal>
+                <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5">Capabilities</p>
+                <h2 className="text-3xl font-heading font-bold text-foreground mb-8">Asset Classes</h2>
+                <ul className="space-y-3">
+                  {capabilities.map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-sm font-body text-muted-foreground">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </ScrollReveal>
+            </div>
 
-            <ScrollReveal delay={0.15}>
-              <ul className="space-y-3">
-                {bulletCol1.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm font-body text-muted-foreground">
-                    <span className="w-2 h-2 rounded-full border border-havenz-navy mt-1.5 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.3}>
-              <ul className="space-y-3">
-                {bulletCol2.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm font-body text-muted-foreground">
-                    <span className="w-2 h-2 rounded-full border border-havenz-navy mt-1.5 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
+            <div className="lg:col-span-7">
+              <ScrollReveal delay={0.15}>
+                <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5">Principles</p>
+                <h2 className="text-3xl font-heading font-bold text-foreground mb-8">How We Operate</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {principles.map((item) => (
+                    <div key={item} className="flex items-start gap-3 p-4 rounded-xl bg-secondary/50 border border-border">
+                      <CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" />
+                      <span className="text-sm font-body text-muted-foreground">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Service Details */}
-      <section className="section-padding bg-secondary">
+      {/* Service Cards */}
+      <section className="section-padding bg-secondary/30">
         <div className="mx-auto max-w-6xl">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
-              Construction Services that Go Beyond Expectations
+            <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5">Core Services</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-12">
+              Beyond Expectations
             </h2>
-            <div className="w-16 h-1 bg-accent mb-12" />
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {serviceDetails.map((service, i) => (
               <ScrollReveal key={service.title} delay={i * 0.1}>
-                <div className="p-8 bg-card border border-border rounded-xl hover:shadow-md transition-all duration-300">
-                  <h3 className="text-lg font-display font-bold text-foreground mb-3">{service.title}</h3>
-                  <p className="text-sm font-body text-muted-foreground leading-relaxed">{service.description}</p>
+                <div className="group relative p-8 md:p-10 rounded-2xl bg-card border border-border hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 h-full">
+                  <div className="absolute top-8 right-8 text-[3rem] font-heading font-bold text-border/40 leading-none select-none group-hover:text-accent/10 transition-colors">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <h3 className="text-xl font-heading font-bold text-foreground mb-3 pr-12">{service.title}</h3>
+                  <p className="text-sm font-body text-muted-foreground leading-relaxed">{service.desc}</p>
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-brand rounded-b-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
               </ScrollReveal>
             ))}
@@ -148,33 +149,32 @@ const Services = () => {
       </section>
 
       {/* Scope 1, 2, 3 */}
-      <section className="section-padding bg-havenz-navy text-primary-foreground">
-        <div className="mx-auto max-w-6xl">
+      <section className="relative py-32 bg-havenz-navy overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(173_58%_39%_/_0.05)_0%,_transparent_60%)]" />
+        <div className="mx-auto max-w-6xl px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="text-sm font-body uppercase tracking-[0.3em] text-havenz-teal mb-4">Regulatory Alignment</p>
-              <h2 className="text-3xl md:text-4xl font-display font-bold">
-                Scope 1, 2, 3 Compliance
-              </h2>
-              <p className="mt-4 text-primary-foreground/60 font-body max-w-2xl mx-auto">
-                All our developments are designed to meet and exceed global emissions mandates across all three scopes.
-              </p>
-            </div>
+            <p className="text-xs font-body uppercase tracking-[0.25em] text-havenz-teal mb-5 text-center">Alignment</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground text-center mb-4">
+              Scope 1, 2, 3 Compliance
+            </h2>
+            <p className="text-primary-foreground/50 font-body text-center max-w-2xl mx-auto mb-16">
+              All developments designed to meet and exceed global emissions mandates.
+            </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {scopeItems.map((item, i) => (
-              <ScrollReveal key={item.scope} delay={i * 0.15}>
-                <div className="text-center p-8 rounded-xl border border-primary-foreground/10 bg-primary-foreground/5">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-havenz-teal mb-6">
-                    <span className="text-lg font-body font-bold text-havenz-teal">{item.scope.split(" ")[1]}</span>
+              <ScrollReveal key={item.scope} delay={i * 0.12}>
+                <div className="p-8 rounded-2xl border border-primary-foreground/8 bg-primary-foreground/[0.03] text-center h-full">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full border border-havenz-teal/30 mb-6">
+                    <span className="text-lg font-heading font-bold text-havenz-teal">{item.scope.split(" ")[1]}</span>
                   </div>
-                  <h3 className="text-lg font-display font-bold mb-1">{item.scope}</h3>
-                  <p className="text-sm font-body font-medium text-havenz-teal mb-4">{item.title}</p>
+                  <h3 className="text-lg font-heading font-bold text-primary-foreground mb-1">{item.scope}</h3>
+                  <p className="text-sm font-body text-havenz-teal mb-5">{item.title}</p>
                   <ul className="space-y-2 text-left">
                     {item.items.map((li) => (
-                      <li key={li} className="flex items-center gap-2 text-sm font-body text-primary-foreground/60">
-                        <CheckCircle2 size={14} className="text-havenz-teal shrink-0" />
+                      <li key={li} className="flex items-center gap-2 text-sm font-body text-primary-foreground/50">
+                        <div className="w-1 h-1 rounded-full bg-havenz-teal shrink-0" />
                         {li}
                       </li>
                     ))}
@@ -190,33 +190,29 @@ const Services = () => {
       <section className="section-padding bg-background">
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <ScrollReveal direction="left">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-                  Partnership Model
-                </h2>
-                <p className="text-muted-foreground font-body leading-relaxed mb-4">
-                  We collaborate with landowners and municipalities to apply our proven templates and expertise, transforming raw land into thriving, sustainable communities.
-                </p>
-                <p className="text-muted-foreground font-body leading-relaxed mb-8">
-                  If you have land ready for development and a vision for a great project, we are eager to partner with you in making it a reality.
-                </p>
-                <Link to="/contact">
-                  <Button className="bg-accent text-accent-foreground hover:bg-accent/90 font-body text-sm tracking-wider rounded-full px-8">
-                    Start a Conversation <ArrowRight className="ml-2" size={16} />
-                  </Button>
-                </Link>
-              </div>
+            <ScrollReveal>
+              <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5">Collaborate</p>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                Partnership Model
+              </h2>
+              <p className="text-muted-foreground font-body leading-relaxed mb-8">
+                We collaborate with landowners and municipalities to apply our proven templates and expertise, transforming raw land into thriving, sustainable communities. If you have a vision, we're eager to partner.
+              </p>
+              <Link to="/contact">
+                <Button className="bg-gradient-brand text-accent-foreground hover:opacity-90 font-body text-sm rounded-full px-8 h-10 shadow-lg shadow-accent/20">
+                  Start a Conversation <ArrowRight className="ml-2" size={14} />
+                </Button>
+              </Link>
             </ScrollReveal>
 
-            <ScrollReveal direction="right">
-              <div className="space-y-4">
+            <ScrollReveal delay={0.2}>
+              <div className="space-y-3">
                 {["Landowner Partnership", "Municipal Collaboration", "Template Application", "Project Execution"].map((step, i) => (
-                  <div key={step} className="flex items-center gap-4 p-5 rounded-xl bg-secondary border border-border">
-                    <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
-                      <span className="text-sm font-body font-bold text-accent">{i + 1}</span>
+                  <div key={step} className="flex items-center gap-4 p-5 rounded-xl bg-secondary/50 border border-border group hover:border-accent/20 transition-all duration-300">
+                    <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors">
+                      <span className="text-sm font-heading font-bold text-accent">{String(i + 1).padStart(2, '0')}</span>
                     </div>
-                    <span className="font-body font-medium text-foreground">{step}</span>
+                    <span className="font-body font-medium text-foreground text-sm">{step}</span>
                   </div>
                 ))}
               </div>

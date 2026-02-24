@@ -1,45 +1,30 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 const timeline = [
-  {
-    year: "2010",
-    title: "Founded",
-    description: "Founded on a legacy of collaboration and strategic alliances, Havenz Smart Communities came into existence.",
-  },
-  {
-    year: "2024",
-    title: "Embarking",
-    description: "Embarking on an accelerated journey of vision, Havenz Smart Communities manages thousands of acres primed for development.",
-  },
-  {
-    year: "2025",
-    title: "Stepping Forward",
-    description: "Stepping into an era of active construction and development, spearheading various projects through the development pipeline.",
-  },
-  {
-    year: "2026",
-    title: "Leading Innovation",
-    description: "Setting the course to have multiple asset classes under construction, leading in Smart Real Estate & Innovation.",
-  },
+  { year: "2010", title: "Founded", desc: "Havenz Smart Communities came into existence on a legacy of collaboration and strategic alliances." },
+  { year: "2024", title: "Accelerating", desc: "Managing thousands of acres primed for development, embarking on an accelerated journey of vision." },
+  { year: "2025", title: "Building", desc: "Active construction and development phase, spearheading various projects through the pipeline." },
+  { year: "2026", title: "Leading", desc: "Multiple asset classes under construction, leading in Smart Real Estate & Innovation." },
 ];
 
 const team = [
-  { name: "Sunny Sarpal", role: "Havenz Smart Communities" },
-  { name: "John Burdiga", role: "Havenz Smart Communities" },
-  { name: "Dominic Friio", role: "Havenz Smart Communities" },
-  { name: "Dennis Cheng", role: "Havenz Smart Communities" },
-  { name: "Nelson Liem", role: "Havenz Smart Communities" },
+  { name: "Sunny Sarpal", initials: "SS" },
+  { name: "John Burdiga", initials: "JB" },
+  { name: "Dominic Friio", initials: "DF" },
+  { name: "Dennis Cheng", initials: "DC" },
+  { name: "Nelson Liem", initials: "NL" },
 ];
 
 const partnersLogos = [
   "GGA Architecture", "Telus", "Samsung", "Energy Haven",
   "Century 21", "M3 Development", "Red Deer County",
-  "Mobility Quotient", "Monarch Collective Inc.", "Exmerce",
+  "Mobility Quotient", "Monarch Collective", "Exmerce",
 ];
 
 const About = () => {
@@ -47,83 +32,72 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Banner */}
-      <section className="relative h-[50vh] min-h-[400px] flex items-end bg-havenz-navy overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-havenz-dark/50 to-havenz-navy/90" />
-        <div className="absolute inset-0 bg-gradient-to-r from-havenz-teal/5 to-accent/5" />
-        <div className="relative z-10 mx-auto max-w-7xl px-6 pb-12 lg:px-8 w-full">
-          <p className="text-sm font-body uppercase tracking-[0.3em] text-havenz-teal mb-2">About Us</p>
+      {/* Hero */}
+      <section className="relative pt-16 min-h-[60vh] flex items-center bg-havenz-navy overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_hsl(173_58%_39%_/_0.08)_0%,_transparent_60%)]" />
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'linear-gradient(hsl(173 58% 39% / 0.3) 1px, transparent 1px), linear-gradient(90deg, hsl(173 58% 39% / 0.3) 1px, transparent 1px)',
+          backgroundSize: '80px 80px'
+        }} />
+        <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-xs font-body uppercase tracking-[0.25em] text-havenz-teal mb-5">About Havenz</p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-[1.1] max-w-3xl">
+              Pioneering Sustainable{" "}
+              <span className="text-gradient">Development</span>
+            </h1>
+            <p className="mt-6 text-lg text-primary-foreground/50 font-body max-w-2xl leading-relaxed">
+              Transforming Real Estate with ESG+R, Data-Driven Smart Communities focused on Food, Energy, Data, and Job Security.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Main Content */}
+      {/* Story */}
       <section className="section-padding bg-background">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <ScrollReveal>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground leading-[1.1]">
-                Pioneering Sustainable Development: Transforming Real Estate with Havenz Smart Communities
-              </h1>
-              <div className="w-16 h-1 bg-accent mt-6" />
-              <h2 className="text-lg md:text-xl font-display text-havenz-teal mt-6 leading-relaxed">
-                Leading the Way in ESG+R, Data-Driven Smart Communities with a Focus on Food, Energy, Data, and Job Security
-              </h2>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <div className="aspect-[4/3] bg-gradient-to-br from-havenz-dark to-havenz-navy rounded-lg flex items-center justify-center">
-                <div className="text-center p-8">
-                  <svg viewBox="0 0 40 40" className="w-16 h-16 mx-auto mb-4" fill="none">
-                    <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" stroke="hsl(170, 65%, 50%)" strokeWidth="1.5" fill="none" />
-                    <polygon points="20,8 30,14 30,26 20,32 10,26 10,14" stroke="hsl(170, 65%, 50%)" strokeWidth="1" fill="none" opacity="0.6" />
-                    <circle cx="20" cy="20" r="3" fill="hsl(170, 65%, 50%)" opacity="0.8" />
-                  </svg>
-                  <span className="text-sm font-body tracking-[0.3em] text-primary-foreground/60">H A V E N Z</span>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Company Description */}
-      <section className="section-padding bg-secondary">
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-5xl">
           <ScrollReveal>
-            <div className="space-y-6 text-muted-foreground font-body leading-relaxed">
-              <p>
-                At Havenz Smart Communities, we are more than just a real estate development company – we are revolutionizing the industry by spearheading projects that prioritize sustainability and innovation. Our approach is rooted in creating ESG+R (Environmental, Social, Governance, and Resilience) compliant, data-driven, and template-based smart communities that redefine the standards of real estate development.
-              </p>
-              <p>
-                We specialize in specific projects across all asset classes, with a core focus on ensuring food security, energy sustainability, data integrity, and job stability within our developments. By embedding these essential elements into our projects, we aim to address the critical challenges faced by communities today and offer sustainable solutions for the future.
-              </p>
-              <p>
-                Aligned with global Scope 1, 2, 3 mandates, we are committed to developing projects that not only meet regulatory requirements but also set new benchmarks for environmental responsibility.
-              </p>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+              <div className="lg:col-span-4">
+                <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5">Our Story</p>
+                <h2 className="text-3xl font-heading font-bold text-foreground">More Than Real Estate</h2>
+              </div>
+              <div className="lg:col-span-8 space-y-5 text-muted-foreground font-body leading-relaxed">
+                <p>
+                  At Havenz Smart Communities, we are revolutionizing the industry by spearheading projects that prioritize sustainability and innovation. Our approach is rooted in creating ESG+R compliant, data-driven, and template-based smart communities.
+                </p>
+                <p>
+                  We specialize across all asset classes, with a core focus on food security, energy sustainability, data integrity, and job stability. Aligned with global Scope 1, 2, 3 mandates, we develop projects that set new benchmarks for environmental responsibility.
+                </p>
+              </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
       {/* Timeline */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-secondary/30">
         <div className="mx-auto max-w-4xl">
+          <ScrollReveal>
+            <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5 text-center">Journey</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground text-center mb-16">A Legacy of Progress</h2>
+          </ScrollReveal>
+
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-border" />
+            <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-px bg-border" />
 
             {timeline.map((item, i) => (
-              <ScrollReveal key={item.year} delay={i * 0.15}>
-                <div className={`relative flex items-start mb-16 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
-                  {/* Dot */}
-                  <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-accent border-4 border-background z-10" />
-
-                  {/* Content */}
-                  <div className={`ml-16 md:ml-0 md:w-[42%] ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16 md:ml-auto"}`}>
-                    <p className="text-sm font-body font-semibold text-foreground mb-1">{item.title}</p>
-                    <p className="text-sm font-body text-muted-foreground leading-relaxed mb-3">{item.description}</p>
-                    <span className="inline-block px-4 py-1 bg-accent text-accent-foreground text-sm font-body font-bold rounded-full">
-                      {item.year}
-                    </span>
+              <ScrollReveal key={item.year} delay={i * 0.12}>
+                <div className={`relative flex items-start mb-16 last:mb-0 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+                  <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-accent border-4 border-background z-10" />
+                  <div className={`ml-16 md:ml-0 md:w-[44%] ${i % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16 md:ml-auto"}`}>
+                    <span className="inline-block px-3 py-1 bg-accent/10 text-accent text-xs font-body font-semibold rounded-full mb-3">{item.year}</span>
+                    <h3 className="text-xl font-heading font-bold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm font-body text-muted-foreground leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               </ScrollReveal>
@@ -132,19 +106,26 @@ const About = () => {
         </div>
       </section>
 
-      {/* Integrated Development Approach */}
-      <section className="section-padding bg-havenz-navy text-primary-foreground">
-        <div className="mx-auto max-w-5xl">
+      {/* Integrated Development */}
+      <section className="relative py-32 bg-havenz-navy overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_hsl(173_58%_39%_/_0.06)_0%,_transparent_50%)]" />
+        <div className="mx-auto max-w-5xl px-6 lg:px-8 relative z-10">
           <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
-              Integrated Development Approach
+            <p className="text-xs font-body uppercase tracking-[0.25em] text-havenz-teal mb-5">Approach</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground mb-8">
+              Integrated Development
             </h2>
-            <p className="text-primary-foreground/60 font-body leading-relaxed max-w-3xl mb-8">
-              At Havenz Smart Communities, we take pride in our role as integrators, leveraging strategic relationships to handle all aspects of our developments. Our goal is to collaborate with project partners and landowners to apply our templates and expertise in bringing projects to fruition.
-            </p>
-            <p className="text-primary-foreground/60 font-body leading-relaxed max-w-3xl mb-8">
-              We prioritize seamless integration with landowners and municipalities to create sustainable and impactful developments. If you have land ready for development and a vision for a great project, we are eager to partner with you in making it a reality.
-            </p>
+            <div className="space-y-5 text-primary-foreground/50 font-body leading-relaxed max-w-3xl">
+              <p>
+                We take pride in our role as integrators, leveraging strategic relationships to handle all aspects of our developments. We collaborate with partners and landowners to apply our templates and expertise.
+              </p>
+              <p>
+                If you have land ready for development and a vision for a great project, we are eager to partner with you.
+              </p>
+            </div>
+            <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-body font-medium text-havenz-teal mt-8 hover:gap-3 transition-all duration-300">
+              Partner with us <ArrowUpRight size={16} />
+            </Link>
           </ScrollReveal>
         </div>
       </section>
@@ -152,59 +133,70 @@ const About = () => {
       {/* Energy Haven Partnership */}
       <section className="section-padding bg-background">
         <div className="mx-auto max-w-5xl">
-          <ScrollReveal>
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-              Partnership with Energy Haven
-            </h2>
-            <h3 className="text-xl font-display text-havenz-teal mb-6">
-              Driving Green & Renewable Energy Projects
-            </h3>
-            <p className="text-muted-foreground font-body leading-relaxed max-w-3xl mb-8">
-              Havenz Smart Communities is proud to announce our partnership with Energy Haven – Clean Energy Infrastructure Partnership, a leader in deploying green and renewable energy projects with a focus on power generation and infrastructure. Through this strategic alliance, we have the capabilities to advance ESG-focused projects aligning with Scope 1, 2, 3 mandates.
-            </p>
-            <Link to="/services">
-              <Button className="bg-accent text-accent-foreground hover:bg-accent/90 font-body text-sm tracking-wider rounded-full px-8">
-                Explore Services <ArrowRight className="ml-2" size={16} />
-              </Button>
-            </Link>
-          </ScrollReveal>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-7">
+              <ScrollReveal>
+                <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5">Strategic Alliance</p>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                  Energy Haven Partnership
+                </h2>
+                <p className="text-muted-foreground font-body leading-relaxed mb-6">
+                  Through our partnership with Energy Haven — Clean Energy Infrastructure Partnership, we deploy green and renewable energy projects focused on power generation. Together, we advance ESG projects aligned with Scope 1, 2, 3 mandates.
+                </p>
+                <Link to="/services">
+                  <Button className="bg-gradient-brand text-accent-foreground hover:opacity-90 font-body text-sm rounded-full px-8 h-10 shadow-lg shadow-accent/20">
+                    Explore Services <ArrowRight className="ml-2" size={14} />
+                  </Button>
+                </Link>
+              </ScrollReveal>
+            </div>
+            <div className="lg:col-span-5">
+              <ScrollReveal delay={0.2}>
+                <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/5 via-secondary to-havenz-teal-light flex items-center justify-center p-12 border border-border">
+                  <div className="text-center">
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-brand flex items-center justify-center mx-auto mb-4 shadow-lg shadow-accent/20">
+                      <span className="text-2xl font-heading font-bold text-accent-foreground">⚡</span>
+                    </div>
+                    <p className="font-heading text-lg font-bold text-foreground">Clean Energy</p>
+                    <p className="font-body text-xs text-muted-foreground mt-1">Infrastructure Partnership</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="section-padding bg-secondary">
+      {/* Team & Partners */}
+      <section className="section-padding bg-secondary/30">
         <div className="mx-auto max-w-6xl">
           <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
-                Collaborative Partnerships and Innovators' Showcase
-              </h2>
-              <p className="text-muted-foreground font-body mt-4">
-                An Insight into the Diverse Network of Individuals and Companies Involved with Havenz Smart Communities
-              </p>
-            </div>
+            <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5 text-center">Our People</p>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground text-center mb-16">
+              Leadership & Partners
+            </h2>
           </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
+          {/* Team */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mb-16">
             {team.map((member, i) => (
-              <ScrollReveal key={member.name} delay={i * 0.1}>
-                <div className="text-center p-6 rounded-xl bg-card border border-border hover:shadow-md transition-all duration-300">
-                  <div className="w-20 h-20 rounded-full bg-havenz-navy mx-auto mb-4 flex items-center justify-center">
-                    <span className="text-xl font-display font-bold text-havenz-teal">
-                      {member.name.split(" ").map(n => n[0]).join("")}
-                    </span>
+              <ScrollReveal key={member.name} delay={i * 0.08}>
+                <div className="group text-center p-6 rounded-2xl bg-card border border-border hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5 transition-all duration-500">
+                  <div className="w-16 h-16 rounded-full bg-havenz-navy mx-auto mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                    <span className="text-lg font-heading font-bold text-havenz-teal">{member.initials}</span>
                   </div>
                   <h3 className="text-sm font-body font-semibold text-foreground">{member.name}</h3>
-                  <p className="text-xs font-body text-muted-foreground mt-1">{member.role}</p>
+                  <p className="text-xs font-body text-muted-foreground mt-1">Havenz Smart Communities</p>
                 </div>
               </ScrollReveal>
             ))}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          {/* Partners */}
+          <div className="flex flex-wrap justify-center gap-3">
             {partnersLogos.map((partner, i) => (
-              <ScrollReveal key={partner} delay={i * 0.05}>
-                <div className="px-6 py-3 bg-card border border-border rounded-lg text-sm font-body font-medium text-muted-foreground hover:text-foreground hover:border-accent/30 transition-all duration-300 cursor-default">
+              <ScrollReveal key={partner} delay={i * 0.04}>
+                <div className="px-5 py-2.5 bg-card border border-border rounded-full text-sm font-body text-muted-foreground hover:text-accent hover:border-accent/20 transition-all duration-300 cursor-default">
                   {partner}
                 </div>
               </ScrollReveal>

@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Playfair Display", "serif"],
+        heading: ["Space Grotesk", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
       colors: {
@@ -58,6 +58,7 @@ export default {
           slate: "hsl(var(--havenz-slate))",
           teal: "hsl(var(--havenz-teal))",
           "teal-light": "hsl(var(--havenz-teal-light))",
+          cyan: "hsl(var(--havenz-cyan))",
           blue: "hsl(var(--havenz-blue))",
           warm: "hsl(var(--havenz-warm))",
           gold: "hsl(var(--havenz-gold))",

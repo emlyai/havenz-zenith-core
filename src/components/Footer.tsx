@@ -1,91 +1,113 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import havenzLogo from "@/assets/havenz-logo.png";
+
+const offices = [
+  {
+    name: "Corporate Office",
+    address: "1331 Macleod Trail SE #600, Calgary, AB T2G 0K3",
+  },
+  {
+    name: "AHI — AI Hub of Innovation",
+    address: "1331 Macleod Trail SE #600, Calgary, AB T2G 0K3",
+  },
+  {
+    name: "AHI Red Deer Campus",
+    address: "Red Deer County, AB T4S 2M4",
+  },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-havenz-navy text-primary-foreground">
-      {/* Contact info row */}
-      <div className="border-t border-primary-foreground/10">
-        <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <h4 className="text-sm font-body font-semibold tracking-wider mb-4">Corporate Office</h4>
-              <div className="space-y-2 text-sm font-body text-primary-foreground/60">
-                <a href="mailto:info@havenzcorp.com" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
-                  <Mail size={14} /> info@havenzcorp.com
-                </a>
-                <a href="tel:+14038307209" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
-                  <Phone size={14} /> + 1 403 830 7209
-                </a>
-                <div className="flex items-start gap-2">
-                  <MapPin size={14} className="mt-0.5 shrink-0" />
-                  <span>1331 Macleod Trail SE #600, Calgary, AB T2G 0K3</span>
-                </div>
-              </div>
-            </div>
+    <footer className="bg-havenz-navy text-primary-foreground relative overflow-hidden">
+      {/* Decorative gradient */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-brand opacity-40" />
 
-            <div>
-              <h4 className="text-sm font-body font-semibold tracking-wider mb-4">AHI - AI Hub of Innovation</h4>
-              <div className="space-y-2 text-sm font-body text-primary-foreground/60">
-                <a href="mailto:info@havenzcorp.com" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
-                  <Mail size={14} /> info@havenzcorp.com
-                </a>
-                <a href="tel:+14038307209" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
-                  <Phone size={14} /> + 1 403 830 7209
-                </a>
-                <div className="flex items-start gap-2">
-                  <MapPin size={14} className="mt-0.5 shrink-0" />
-                  <span>1331 Macleod Trail SE #600, Calgary, AB T2G 0K3</span>
-                </div>
-              </div>
+      <div className="mx-auto max-w-7xl px-6 pt-20 pb-8 lg:px-8 relative z-10">
+        {/* Top section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+          {/* Brand column */}
+          <div className="lg:col-span-4">
+            <img src={havenzLogo} alt="Havenz Smart Communities" className="h-12 w-auto mb-6" />
+            <p className="text-sm font-body text-primary-foreground/50 leading-relaxed max-w-xs">
+              Pioneering the next generation of smart living — communities that balance energy, data, food, and job security.
+            </p>
+            <div className="flex gap-4 mt-8">
+              <a href="mailto:info@havenzcorp.com" className="w-10 h-10 rounded-full border border-primary-foreground/10 flex items-center justify-center text-primary-foreground/40 hover:text-havenz-teal hover:border-havenz-teal/30 transition-all duration-300">
+                <Mail size={16} />
+              </a>
+              <a href="tel:+14038307209" className="w-10 h-10 rounded-full border border-primary-foreground/10 flex items-center justify-center text-primary-foreground/40 hover:text-havenz-teal hover:border-havenz-teal/30 transition-all duration-300">
+                <Phone size={16} />
+              </a>
             </div>
+          </div>
 
-            <div>
-              <h4 className="text-sm font-body font-semibold tracking-wider mb-4">AHI Red Deer - Sustainable Innovation Campus</h4>
-              <div className="space-y-2 text-sm font-body text-primary-foreground/60">
-                <a href="mailto:info@havenzcorp.com" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
-                  <Mail size={14} /> info@havenzcorp.com
-                </a>
-                <a href="tel:+14038307209" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
-                  <Phone size={14} /> + 1 403 830 7209
-                </a>
-                <div className="flex items-start gap-2">
-                  <MapPin size={14} className="mt-0.5 shrink-0" />
-                  <span>Red Deer County, AB T4S 2M4</span>
-                </div>
-              </div>
+          {/* Nav column */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-body font-semibold uppercase tracking-[0.2em] text-primary-foreground/30 mb-6">Navigate</h4>
+            <div className="flex flex-col gap-3">
+              {[
+                { label: "Home", to: "/" },
+                { label: "About", to: "/about" },
+                { label: "Services", to: "/services" },
+                { label: "Contact", to: "/contact" },
+              ].map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-sm font-body text-primary-foreground/50 hover:text-havenz-teal transition-colors duration-300 flex items-center gap-1 group"
+                >
+                  {link.label}
+                  <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                </Link>
+              ))}
             </div>
+          </div>
 
-            <div>
-              <h4 className="text-sm font-body font-semibold tracking-wider mb-4">Media Inquiries</h4>
-              <div className="space-y-2 text-sm font-body text-primary-foreground/60">
-                <p>Rick Fraser</p>
-                <a href="mailto:rick@prairieskystrategy.ca" className="hover:text-primary-foreground transition-colors block">
+          {/* Offices */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-body font-semibold uppercase tracking-[0.2em] text-primary-foreground/30 mb-6">Offices</h4>
+            <div className="space-y-5">
+              {offices.map((office) => (
+                <div key={office.name}>
+                  <p className="text-sm font-body font-medium text-primary-foreground/70 mb-1">{office.name}</p>
+                  <p className="text-xs font-body text-primary-foreground/40 flex items-start gap-1.5">
+                    <MapPin size={12} className="mt-0.5 shrink-0" />
+                    {office.address}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-body font-semibold uppercase tracking-[0.2em] text-primary-foreground/30 mb-6">Get in Touch</h4>
+            <div className="space-y-4">
+              <a href="mailto:info@havenzcorp.com" className="text-sm font-body text-primary-foreground/50 hover:text-havenz-teal transition-colors block">
+                info@havenzcorp.com
+              </a>
+              <a href="tel:+14038307209" className="text-sm font-body text-primary-foreground/50 hover:text-havenz-teal transition-colors block">
+                +1 (403) 830-7209
+              </a>
+              <div className="pt-4 border-t border-primary-foreground/5">
+                <p className="text-xs font-body text-primary-foreground/30 mb-2">Media Inquiries</p>
+                <p className="text-sm font-body text-primary-foreground/50">Rick Fraser</p>
+                <a href="mailto:rick@prairieskystrategy.ca" className="text-xs font-body text-primary-foreground/40 hover:text-havenz-teal transition-colors">
                   rick@prairieskystrategy.ca
-                </a>
-                <a href="tel:+14037017584" className="hover:text-primary-foreground transition-colors block">
-                  + 1 403.701.7584
                 </a>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="border-t border-primary-foreground/10">
-        <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <svg viewBox="0 0 40 40" className="w-8 h-8" fill="none">
-              <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" stroke="hsl(170, 65%, 50%)" strokeWidth="1.5" fill="none" />
-              <polygon points="20,8 30,14 30,26 20,32 10,26 10,14" stroke="hsl(170, 65%, 50%)" strokeWidth="1" fill="none" opacity="0.6" />
-              <circle cx="20" cy="20" r="3" fill="hsl(170, 65%, 50%)" opacity="0.8" />
-            </svg>
-            <span className="text-xs font-body tracking-[0.2em] text-primary-foreground/60">
-              H A V E N Z &nbsp; S M A R T &nbsp; C O M M U N I T I E S
-            </span>
-          </div>
-          <p className="text-xs font-body text-primary-foreground/40">
-            © {new Date().getFullYear()} Havenz Smart Communities Inc. All rights reserved.
+        {/* Bottom */}
+        <div className="border-t border-primary-foreground/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs font-body text-primary-foreground/30">
+            © {new Date().getFullYear()} Havenz Smart Communities Inc.
+          </p>
+          <p className="text-xs font-body text-primary-foreground/20">
+            Power · Infrastructure · Compute · Sovereign AI
           </p>
         </div>
       </div>
