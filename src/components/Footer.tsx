@@ -28,7 +28,7 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
           {/* Brand column */}
           <div className="lg:col-span-4">
-            <img src={havenzLogo} alt="Havenz Smart Communities" className="h-12 w-auto mb-6" />
+            <img src={havenzLogo} alt="Havenz Smart Communities" className="h-12 w-auto mb-6 mix-blend-screen" />
             <p className="text-sm font-body text-primary-foreground/50 leading-relaxed max-w-xs">
               Pioneering the next generation of smart living — communities that balance energy, data, food, and job security.
             </p>

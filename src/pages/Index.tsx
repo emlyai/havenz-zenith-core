@@ -72,7 +72,7 @@ const Index = () => {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             className="mb-12"
           >
-            <img src={havenzLogo} alt="Havenz" className="h-16 md:h-20 w-auto mx-auto" />
+            <img src={havenzLogo} alt="Havenz" className="h-16 md:h-20 w-auto mx-auto mix-blend-screen" />
           </motion.div>
 
           <motion.h1

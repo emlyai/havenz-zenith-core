@@ -40,7 +40,7 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 h-16 lg:px-8">
         {/* Logo */}
         <Link to="/" className="flex items-center shrink-0">
-          <img src={havenzLogo} alt="Havenz Smart Communities" className="h-10 w-auto" />
+          <img src={havenzLogo} alt="Havenz Smart Communities" className="h-10 w-auto mix-blend-screen" />
         </Link>
 
         {/* Desktop nav */}
