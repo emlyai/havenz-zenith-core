@@ -10,7 +10,7 @@ interface AnimatedCounterProps {
   formatAsMillions?: boolean;
 }
 
-export function AnimatedCounter({ end, duration = 2000, suffix = "", prefix = "", label, formatAsMillions = false }: AnimatedCounterProps) {
+export function AnimatedCounter({ end, duration = 2200, suffix = "", prefix = "", label, formatAsMillions = false }: AnimatedCounterProps) {
   const { ref, isVisible } = useScrollReveal(0.3);
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -23,7 +23,7 @@ export function AnimatedCounter({ end, duration = 2000, suffix = "", prefix = ""
     const animate = (now: number) => {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
+      const eased = 1 - Math.pow(1 - progress, 4);
       setCount(Math.round(eased * end));
       if (progress < 1) requestAnimationFrame(animate);
     };
@@ -36,11 +36,12 @@ export function AnimatedCounter({ end, duration = 2000, suffix = "", prefix = ""
     : `${prefix}${count.toLocaleString()}${suffix}`;
 
   return (
-    <div ref={ref} className="text-center">
-      <div className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground">
+    <div ref={ref} className="text-center group">
+      <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground tracking-tight">
         {displayValue}
       </div>
-      <p className="mt-2 text-sm font-body uppercase tracking-widest text-muted-foreground">{label}</p>
+      <div className="w-8 h-0.5 bg-gradient-brand mx-auto mt-4 mb-3 opacity-60 group-hover:w-12 transition-all duration-500" />
+      <p className="text-xs font-body uppercase tracking-[0.15em] text-muted-foreground leading-relaxed max-w-[200px] mx-auto">{label}</p>
     </div>
   );
 }

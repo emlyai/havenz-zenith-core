@@ -1,58 +1,51 @@
 
 
-# Havenz Corp — Website Redesign
+# Havenz Corp — Website Redesign v3
 
-A faithful recreation of the original Havenz website (havenz.ai) with refined polish, matching the dark navbar, geometric logo, hero sections, content structure, and blue CTA styling.
+A visually striking, forward-looking corporate website reflecting Havenz's positioning in sovereign AI, infrastructure, compute, and sustainable smart communities.
 
 ---
 
 ## Design System
-- **Style**: Dark navy navbar, light content sections, blue accent CTA buttons, teal brand accents
-- **Animations**: Bold scroll-triggered reveals, animated counters, scrolling marquee, smooth transitions
-- **Typography**: Playfair Display for headings, Inter for body text
-- **Colors**: Navy (#1c2433), Blue accent (#5b6cf0), Teal (#33c7a0)
+- **Typography**: Space Grotesk (headings) + Inter (body) — modern, tech-forward
+- **Colors**: Dark navy base (#1a1e2e), teal-to-cyan gradient brand accent, clean white content sections
+- **Navbar**: Always dark (no contrast issues), glass morphism on scroll, animated active indicator, actual Havenz logo
+- **Animations**: Framer Motion scroll reveals, floating geometric shapes, marquee, animated counters
+- **Patterns**: Subtle geometric grid overlays, radial gradient backgrounds
 
 ---
 
 ## Pages
 
-### 1. Home Page
-- Dark hero with "Construct. Innovate." headline
-- "Creating Tomorrow's Smart Communities Today" section
-- 3-column mandate bullet lists
-- Animated stats counters (8M sqft, 5000+ acres, 12+ partnerships)
-- Scrolling marquee with brand words
-- 4-step process cards
+### Home
+- Dark cinematic hero with logo, floating geometric shapes, gradient text
+- Mission statement with asymmetric grid layout
+- Four Pillars of Impact cards with hover effects
+- Animated stat counters (8M+ sqft, 5000+ acres, 12+ partnerships)
+- Scrolling marquee strip
+- 4-step process section
 - Flagship project highlight (AHI Red Deer)
-- "Discover Our Story" tabs section
-- Partners grid
-- CTA section
+- Discover Our Story 3-card grid
+- Partners pills
+- Dark CTA section
 
-### 2. About Us Page
-- Dark hero banner
-- Company story with ESG+R focus
-- Timeline (2010-2026)
-- Integrated Development Approach
-- Energy Haven Partnership
-- Team & Partners grid
+### About
+- Dark hero with gradient text
+- Editorial story layout (12-col grid)
+- Timeline with year badges
+- Integrated Development (dark section)
+- Energy Haven partnership with visual accent
+- Team grid + partner pills
 
-### 3. Services Page
-- Dark hero banner
-- Service overview with 2-column bullet lists
-- Detailed service cards
-- Scope 1, 2, 3 compliance (dark section)
+### Services
+- Dark hero with gradient text
+- Two-column overview (capabilities + principles)
+- Service detail cards with numbering
+- Scope 1,2,3 compliance (dark section)
 - Partnership model with numbered steps
 
-### 4. Contact Page
-- Dark hero with star effect
-- Split layout: info left, form right
-- Office locations grid
+### Contact
+- Dark hero with animated stars
+- Split layout: info left, form right (in card)
+- Office location cards
 - Media inquiries section
-
----
-
-## Shared Components
-- **Navbar**: Dark navy with geometric SVG logo, spaced "H A V E N Z" text, teal accent, blue "LET'S TALK!" CTA
-- **Footer**: Dark navy with 4-column office info, logo, copyright
-- **ScrollReveal**: Framer Motion scroll-triggered animations
-- **AnimatedCounter**: Scroll-triggered number animations
