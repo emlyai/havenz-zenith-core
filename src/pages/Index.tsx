@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import havenzLogo from "@/assets/havenz-logo.png";
+
 
 const pillars = [
   { label: "Food Security", desc: "Agricultural resilience embedded into community infrastructure" },
@@ -67,12 +67,12 @@ const Index = () => {
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="mb-8"
           >
-            <img src={havenzLogo} alt="Havenz" className="h-16 md:h-20 w-auto mx-auto mix-blend-screen" />
+            <p className="text-xs font-body uppercase tracking-[0.3em] text-havenz-teal/80">Havenz Smart Communities</p>
           </motion.div>
 
           <motion.h1
@@ -108,7 +108,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/services">
-              <Button size="lg" variant="outline" className="font-body text-sm tracking-wide rounded-full px-10 h-12 border-primary-foreground/15 text-primary-foreground/80 hover:bg-primary-foreground/5 hover:text-primary-foreground">
+              <Button size="lg" variant="outline" className="font-body text-sm tracking-wide rounded-full px-10 h-12 border-primary-foreground/20 text-primary-foreground/80 bg-transparent hover:bg-primary-foreground/5 hover:text-primary-foreground">
                 Explore Services
               </Button>
             </Link>
