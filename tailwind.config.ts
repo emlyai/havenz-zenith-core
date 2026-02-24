@@ -53,10 +53,12 @@ export default {
         },
         havenz: {
           navy: "hsl(var(--havenz-navy))",
+          dark: "hsl(var(--havenz-dark))",
           charcoal: "hsl(var(--havenz-charcoal))",
           slate: "hsl(var(--havenz-slate))",
           teal: "hsl(var(--havenz-teal))",
           "teal-light": "hsl(var(--havenz-teal-light))",
+          blue: "hsl(var(--havenz-blue))",
           warm: "hsl(var(--havenz-warm))",
           gold: "hsl(var(--havenz-gold))",
         },

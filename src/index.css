@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,42 +6,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 220 25% 10%;
+    --background: 0 0% 100%;
+    --foreground: 216 28% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 10%;
+    --card-foreground: 216 28% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 10%;
+    --popover-foreground: 216 28% 12%;
 
-    --primary: 220 40% 13%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 216 28% 12%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 220 25% 10%;
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 216 28% 12%;
 
-    --muted: 210 20% 96%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 175 60% 40%;
+    --accent: 231 72% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 15% 91%;
-    --input: 220 15% 91%;
-    --ring: 220 40% 13%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 231 72% 60%;
 
     --radius: 0.5rem;
 
-    /* Custom Havenz tokens */
-    --havenz-navy: 220 40% 13%;
-    --havenz-charcoal: 220 15% 25%;
-    --havenz-slate: 220 10% 46%;
-    --havenz-teal: 175 60% 40%;
-    --havenz-teal-light: 175 50% 92%;
+    /* Havenz brand tokens */
+    --havenz-navy: 216 28% 12%;
+    --havenz-dark: 216 20% 18%;
+    --havenz-charcoal: 215 16% 30%;
+    --havenz-slate: 215 16% 47%;
+    --havenz-teal: 170 65% 50%;
+    --havenz-teal-light: 170 40% 92%;
+    --havenz-blue: 231 72% 60%;
     --havenz-warm: 35 30% 96%;
     --havenz-gold: 40 70% 55%;
 
@@ -56,33 +58,33 @@
   }
 
   .dark {
-    --background: 220 25% 6%;
+    --background: 216 28% 6%;
     --foreground: 0 0% 95%;
 
-    --card: 220 25% 8%;
+    --card: 216 28% 10%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 220 25% 8%;
+    --popover: 216 28% 10%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 175 60% 50%;
-    --primary-foreground: 220 25% 6%;
+    --primary: 170 65% 50%;
+    --primary-foreground: 216 28% 6%;
 
-    --secondary: 220 20% 15%;
+    --secondary: 216 20% 15%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 220 20% 15%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 216 20% 15%;
+    --muted-foreground: 215 16% 60%;
 
-    --accent: 175 60% 40%;
+    --accent: 231 72% 60%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 175 60% 50%;
+    --border: 216 20% 18%;
+    --input: 216 20% 18%;
+    --ring: 170 65% 50%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -124,16 +126,33 @@
     background-image: linear-gradient(135deg, hsl(var(--havenz-navy)), hsl(var(--havenz-teal)));
   }
 
-  .bg-havenz-warm {
-    background-color: hsl(var(--havenz-warm));
-  }
-
   .section-padding {
-    @apply px-6 py-20 md:px-12 lg:px-24 lg:py-32;
+    @apply px-6 py-20 md:px-12 lg:px-24 lg:py-28;
   }
 }
 
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Hero page banner overlay */
+.hero-banner {
+  position: relative;
+}
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, hsl(216 28% 12% / 0.7), hsl(216 28% 12% / 0.4));
 }
