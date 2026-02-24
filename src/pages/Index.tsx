@@ -172,7 +172,7 @@ const Index = () => {
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <ScrollReveal>
-              <AnimatedCounter end={8000000} suffix="" label="Sqft Under Planning For Future Construction" />
+              <AnimatedCounter end={8000000} suffix="+" label="Sqft Under Planning For Future Construction" formatAsMillions />
             </ScrollReveal>
             <ScrollReveal delay={0.15}>
               <AnimatedCounter end={5000} suffix="+" label="Acres Under Management For Future Development" />
