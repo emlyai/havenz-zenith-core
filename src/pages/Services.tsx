@@ -3,42 +3,75 @@ import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import {
-  Building2, Leaf, BarChart3, Cpu,
-  ArrowRight, CheckCircle2
-} from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-const services = [
+const bulletCol1 = [
+  "Industry-leading technology and data",
+  "Disruptive real estate innovation",
+  "ESG+R commitment and excellence",
+  "Aligned with emissions goals",
+  "Reliable Net Zero energy",
+  "Flexible business models",
+  "Forward-thinking projects",
+  "Collaborative success",
+  "Innovative sustainability practices",
+];
+
+const bulletCol2 = [
+  "All Classes of Real Estate",
+  "Infrastructure Development",
+  "Smart Community Development",
+  "Industrial Development",
+  "(CRU) Commercial Retail Development",
+  "Multi-Family Developments",
+  "Land Acquisitions",
+  "Vision & Master Planning",
+  "(JV) Joint Ventures",
+];
+
+const serviceDetails = [
   {
-    icon: Building2,
-    title: "Smart Communities",
-    description: "Template-based, data-driven residential and mixed-use developments designed for resilience and sustainability.",
-    features: ["ESG+R compliant design", "Smart infrastructure integration", "Community-centric planning"],
+    title: "Industry-leading technology and data",
+    description: "Utilize cutting-edge technology and data analytics to provide unparalleled insights and solutions for smart community development. Our tech-driven approach ensures efficiency, sustainability, and optimal performance in all our projects.",
   },
   {
-    icon: Leaf,
-    title: "Green Energy",
-    description: "Deploying renewable energy solutions through our Energy Haven partnership for clean power generation.",
-    features: ["Solar & wind integration", "Power generation infrastructure", "Carbon offset programs"],
+    title: "Disruptive real estate innovation",
+    description: "Redefine the real estate landscape with groundbreaking innovations. By integrating advanced technologies and creative strategies, we drive significant value and transform traditional real estate paradigms.",
   },
   {
-    icon: BarChart3,
-    title: "ESG+R Compliance",
-    description: "Comprehensive environmental, social, governance, and resilience frameworks for all developments.",
-    features: ["Scope 1, 2, 3 alignment", "Regulatory compliance", "Impact reporting & tracking"],
+    title: "ESG+R commitment and excellence",
+    description: "Exemplify our dedication to Environmental, Social, and Governance (ESG) standards plus Resilience. We integrate ESG principles into every aspect of our operations, ensuring sustainable and socially responsible developments.",
   },
   {
-    icon: Cpu,
-    title: "Data-Driven Development",
-    description: "Leveraging sovereign AI and advanced analytics to optimize community design and operations.",
-    features: ["Sovereign AI positioning", "Predictive analytics", "Digital twin modeling"],
+    title: "Aligned with emissions goals",
+    description: "Commit to meeting and exceeding emissions reduction targets. Our projects are designed to minimize carbon footprints and contribute to global climate goals, ensuring a cleaner, greener future.",
+  },
+  {
+    title: "Reliable Net Zero energy",
+    description: "Achieve net-zero energy consumption by integrating renewable energy sources and energy-efficient designs. Our developments are built to produce as much energy as they consume, promoting environmental sustainability.",
+  },
+  {
+    title: "Flexible business models",
+    description: "Offer adaptable and innovative business models that cater to diverse market needs. Our flexible approach allows us to pivot and respond effectively to changing economic and environmental landscapes.",
   },
 ];
 
 const scopeItems = [
-  { scope: "Scope 1", title: "Direct Emissions", description: "On-site energy, fleet, and facilities management with net-zero targets." },
-  { scope: "Scope 2", title: "Indirect Energy", description: "Renewable energy procurement and green power purchase agreements." },
-  { scope: "Scope 3", title: "Value Chain", description: "Supply chain optimization, sustainable materials, and community impact." },
+  {
+    scope: "Scope 1",
+    title: "Direct Emissions",
+    items: ["On-site energy management", "Fleet optimization", "Facilities with net-zero targets"],
+  },
+  {
+    scope: "Scope 2",
+    title: "Indirect Energy",
+    items: ["Renewable energy procurement", "Green power purchase agreements", "Grid-connected solar & wind"],
+  },
+  {
+    scope: "Scope 3",
+    title: "Value Chain",
+    items: ["Supply chain optimization", "Sustainable materials sourcing", "Community impact measurement"],
+  },
 ];
 
 const Services = () => {
@@ -46,41 +79,103 @@ const Services = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 section-padding bg-gradient-to-b from-secondary to-background">
-        <div className="mx-auto max-w-4xl text-center">
-          <ScrollReveal>
-            <p className="text-sm font-body uppercase tracking-[0.3em] text-accent mb-4">Our Services</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary leading-[1.1]">
-              What We Build
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p className="mt-8 text-lg text-muted-foreground font-body leading-relaxed max-w-3xl mx-auto">
-              From smart communities to green energy infrastructure, we deliver integrated development
-              solutions across all asset classes with a commitment to sustainability and innovation.
-            </p>
-          </ScrollReveal>
+      {/* Hero Banner */}
+      <section className="relative h-[50vh] min-h-[400px] flex items-end bg-havenz-navy overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-havenz-dark/50 to-havenz-navy/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-havenz-teal/5" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 pb-12 lg:px-8 w-full">
+          <p className="text-sm font-body uppercase tracking-[0.3em] text-havenz-teal mb-2">Services</p>
         </div>
       </section>
 
-      {/* Service Cards */}
+      {/* Service Overview */}
       <section className="section-padding bg-background">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+            <ScrollReveal>
+              <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground">
+                Our Services
+              </h1>
+              <div className="w-16 h-1 bg-accent mt-6" />
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
+              <ul className="space-y-3">
+                {bulletCol1.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm font-body text-muted-foreground">
+                    <span className="w-2 h-2 rounded-full border border-havenz-navy mt-1.5 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.3}>
+              <ul className="space-y-3">
+                {bulletCol2.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm font-body text-muted-foreground">
+                    <span className="w-2 h-2 rounded-full border border-havenz-navy mt-1.5 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Details */}
+      <section className="section-padding bg-secondary">
+        <div className="mx-auto max-w-6xl">
+          <ScrollReveal>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              Construction Services that Go Beyond Expectations
+            </h2>
+            <div className="w-16 h-1 bg-accent mb-12" />
+          </ScrollReveal>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, i) => (
-              <ScrollReveal key={service.title} delay={i * 0.12}>
-                <div className="group h-full p-8 md:p-10 rounded-2xl bg-card border border-border hover:border-accent/30 hover:shadow-lg transition-all duration-500">
-                  <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-                    <service.icon className="text-accent" size={28} />
+            {serviceDetails.map((service, i) => (
+              <ScrollReveal key={service.title} delay={i * 0.1}>
+                <div className="p-8 bg-card border border-border rounded-xl hover:shadow-md transition-all duration-300">
+                  <h3 className="text-lg font-display font-bold text-foreground mb-3">{service.title}</h3>
+                  <p className="text-sm font-body text-muted-foreground leading-relaxed">{service.description}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Scope 1, 2, 3 */}
+      <section className="section-padding bg-havenz-navy text-primary-foreground">
+        <div className="mx-auto max-w-6xl">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <p className="text-sm font-body uppercase tracking-[0.3em] text-havenz-teal mb-4">Regulatory Alignment</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold">
+                Scope 1, 2, 3 Compliance
+              </h2>
+              <p className="mt-4 text-primary-foreground/60 font-body max-w-2xl mx-auto">
+                All our developments are designed to meet and exceed global emissions mandates across all three scopes.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {scopeItems.map((item, i) => (
+              <ScrollReveal key={item.scope} delay={i * 0.15}>
+                <div className="text-center p-8 rounded-xl border border-primary-foreground/10 bg-primary-foreground/5">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-havenz-teal mb-6">
+                    <span className="text-lg font-body font-bold text-havenz-teal">{item.scope.split(" ")[1]}</span>
                   </div>
-                  <h3 className="text-2xl font-display font-bold text-primary mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground font-body leading-relaxed mb-6">{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3 text-sm font-body text-muted-foreground">
-                        <CheckCircle2 size={16} className="text-accent shrink-0" />
-                        {feature}
+                  <h3 className="text-lg font-display font-bold mb-1">{item.scope}</h3>
+                  <p className="text-sm font-body font-medium text-havenz-teal mb-4">{item.title}</p>
+                  <ul className="space-y-2 text-left">
+                    {item.items.map((li) => (
+                      <li key={li} className="flex items-center gap-2 text-sm font-body text-primary-foreground/60">
+                        <CheckCircle2 size={14} className="text-havenz-teal shrink-0" />
+                        {li}
                       </li>
                     ))}
                   </ul>
@@ -91,59 +186,23 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Scope 1, 2, 3 */}
-      <section className="section-padding bg-havenz-warm">
-        <div className="mx-auto max-w-6xl">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="text-sm font-body uppercase tracking-[0.3em] text-accent mb-4">Regulatory Alignment</p>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">
-                Scope 1, 2, 3 Compliance
-              </h2>
-              <p className="mt-4 text-muted-foreground font-body max-w-2xl mx-auto">
-                All our developments are designed to meet and exceed global emissions mandates
-                across all three scopes.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {scopeItems.map((item, i) => (
-              <ScrollReveal key={item.scope} delay={i * 0.15}>
-                <div className="text-center p-8 rounded-2xl bg-card border border-border">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-6">
-                    <span className="text-lg font-body font-bold text-accent">{item.scope.split(" ")[1]}</span>
-                  </div>
-                  <h3 className="text-lg font-display font-bold text-primary mb-1">{item.scope}</h3>
-                  <p className="text-sm font-body font-medium text-accent mb-3">{item.title}</p>
-                  <p className="text-sm font-body text-muted-foreground leading-relaxed">{item.description}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Partnership Model */}
+      {/* Partnership CTA */}
       <section className="section-padding bg-background">
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal direction="left">
               <div>
-                <p className="text-sm font-body uppercase tracking-[0.3em] text-accent mb-4">Collaboration</p>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-6">
+                <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
                   Partnership Model
                 </h2>
                 <p className="text-muted-foreground font-body leading-relaxed mb-4">
-                  We collaborate with landowners and municipalities to apply our proven templates
-                  and expertise, transforming raw land into thriving, sustainable communities.
+                  We collaborate with landowners and municipalities to apply our proven templates and expertise, transforming raw land into thriving, sustainable communities.
                 </p>
                 <p className="text-muted-foreground font-body leading-relaxed mb-8">
-                  If you have land ready for development and a vision for a great project,
-                  we are eager to partner with you in making it a reality.
+                  If you have land ready for development and a vision for a great project, we are eager to partner with you in making it a reality.
                 </p>
                 <Link to="/contact">
-                  <Button className="bg-accent text-accent-foreground hover:bg-accent/90 font-body rounded-full px-8">
+                  <Button className="bg-accent text-accent-foreground hover:bg-accent/90 font-body text-sm tracking-wider rounded-full px-8">
                     Start a Conversation <ArrowRight className="ml-2" size={16} />
                   </Button>
                 </Link>
@@ -153,11 +212,11 @@ const Services = () => {
             <ScrollReveal direction="right">
               <div className="space-y-4">
                 {["Landowner Partnership", "Municipal Collaboration", "Template Application", "Project Execution"].map((step, i) => (
-                  <div key={step} className="flex items-center gap-4 p-5 rounded-xl bg-secondary">
+                  <div key={step} className="flex items-center gap-4 p-5 rounded-xl bg-secondary border border-border">
                     <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                       <span className="text-sm font-body font-bold text-accent">{i + 1}</span>
                     </div>
-                    <span className="font-body font-medium text-primary">{step}</span>
+                    <span className="font-body font-medium text-foreground">{step}</span>
                   </div>
                 ))}
               </div>
