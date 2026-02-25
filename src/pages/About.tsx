@@ -58,12 +58,12 @@ const About = () => {
           <motion.div
             animate={{ y: [-15, 15, -15], rotate: [0, 3, 0] }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/3 right-[12%] w-[200px] h-[200px] border border-havenz-teal/8 rounded-full"
+            className="absolute top-1/3 right-[12%] w-[200px] h-[200px] border border-havenz-teal/8 rounded-full hidden sm:block"
           />
           <motion.div
             animate={{ y: [10, -15, 10], scale: [1, 1.05, 1] }}
             transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-1/4 left-[8%] w-[150px] h-[150px] border border-havenz-cyan/5 rounded-full"
+            className="absolute bottom-1/4 left-[8%] w-[150px] h-[150px] border border-havenz-cyan/5 rounded-full hidden sm:block"
           />
           <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <motion.div variants={heroStagger} initial="hidden" animate="visible">
@@ -162,7 +162,7 @@ const About = () => {
           <motion.div
             animate={{ y: [-10, 10, -10], rotate: [0, -2, 0] }}
             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[20%] right-[5%] w-[250px] h-[250px] border border-havenz-teal/5 rounded-full"
+            className="absolute top-[20%] right-[5%] w-[250px] h-[250px] border border-havenz-teal/5 rounded-full hidden sm:block"
           />
           <div className="mx-auto max-w-5xl px-6 lg:px-8 relative z-10">
             <ScrollReveal>

@@ -59,12 +59,12 @@ const Index = () => {
             <motion.div
               animate={{ y: [-20, 20, -20], rotate: [0, 5, 0] }}
               transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-1/4 right-[15%] w-[300px] h-[300px] border border-havenz-teal/10 rounded-full"
+              className="absolute top-1/4 right-[15%] w-[300px] h-[300px] border border-havenz-teal/10 rounded-full hidden sm:block"
             />
             <motion.div
               animate={{ y: [20, -20, 20], rotate: [0, -3, 0] }}
               transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-1/3 left-[10%] w-[200px] h-[200px] border border-havenz-cyan/5 rounded-full"
+              className="absolute bottom-1/3 left-[10%] w-[200px] h-[200px] border border-havenz-cyan/5 rounded-full hidden sm:block"
             />
             <motion.div
               animate={{ scale: [1, 1.1, 1], opacity: [0.03, 0.06, 0.03] }}
@@ -250,7 +250,7 @@ const Index = () => {
           <motion.div
             animate={{ y: [-12, 12, -12], rotate: [0, 3, 0] }}
             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[15%] left-[5%] w-[200px] h-[200px] border border-havenz-teal/5 rounded-full"
+            className="absolute top-[15%] left-[5%] w-[200px] h-[200px] border border-havenz-teal/5 rounded-full hidden sm:block"
           />
           <div className="mx-auto max-w-6xl px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -392,7 +392,7 @@ const Index = () => {
           <motion.div
             animate={{ scale: [1, 1.05, 1], opacity: [0.03, 0.06, 0.03] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-havenz-teal"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-havenz-teal hidden sm:block"
           />
           <div className="mx-auto max-w-4xl px-6 text-center relative z-10">
             <ScrollReveal>

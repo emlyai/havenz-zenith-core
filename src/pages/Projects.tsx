@@ -1,20 +1,41 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { PageTransition } from "@/components/PageTransition";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerDescription } from "@/components/ui/drawer";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { ArrowRight, ArrowUpRight, X, MapPin, CheckCircle2 } from "lucide-react";
 
-const projects = [
+interface Project {
+  title: string;
+  subtitle: string;
+  category: string;
+  image: string;
+  desc: string;
+  details: string[];
+  location: string;
+}
+
+const projects: Project[] = [
   {
     title: "AHI Red Deer",
     subtitle: "Sustainable Innovation Campus",
     category: "Flagship Project",
     image: "https://www.havenz.ai/wp-content/uploads/2024/05/Enscape_1-min.png",
     desc: "A groundbreaking smart campus integrating clean energy, digital connectivity, and sustainable living — setting new standards for AI-powered communities in Alberta.",
-    link: "https://www.havenz.ai/portfolio/ahi-red-deer-sustainable-innovation-campus/",
+    location: "Red Deer County, AB",
+    details: [
+      "480-acre master-planned campus with 8M+ sqft of mixed-use development",
+      "Integrated clean energy grid with solar, wind, and battery storage",
+      "Digital connectivity backbone with sovereign AI data infrastructure",
+      "Mixed-use zoning: residential, commercial, industrial, and agricultural",
+      "ESG+R compliant design aligned with Scope 1, 2, 3 emissions mandates",
+    ],
   },
   {
     title: "Havenz Sustainable Energy Centre",
@@ -22,7 +43,14 @@ const projects = [
     category: "Data Centre & Transport Hub",
     image: "https://www.havenz.ai/wp-content/uploads/2024/04/image-london-c.jpg",
     desc: "Where clean power, AI infrastructure, and food resilience converge. A next-generation data centre and transport hub built for sovereign innovation.",
-    link: "https://www.havenz.ai/portfolio/where-clean-power-ai-infrastructure-and-food-resilience-converge-welcome-to-havenz-sustainable-energy-centre/",
+    location: "Langdon, AB",
+    details: [
+      "Next-generation data centre powered by on-site renewable energy",
+      "Integrated transport hub with smart logistics and EV infrastructure",
+      "Food resilience systems including vertical farming and cold storage",
+      "Clean power generation feeding both on-site and grid-connected systems",
+      "Sovereign AI compute infrastructure for Canadian data sovereignty",
+    ],
   },
   {
     title: "Moon Haven",
@@ -30,7 +58,13 @@ const projects = [
     category: "Sustainable Living",
     image: "https://www.havenz.ai/wp-content/uploads/2024/04/moon-haven-c.png",
     desc: "A serene country residential development blending sustainable living with modern comfort, nestled in Alberta's natural landscape.",
-    link: "https://www.havenz.ai/portfolio/moon-haven-country-residential-cabin-development/",
+    location: "Alberta, Canada",
+    details: [
+      "Country residential lots with modern cabin-style architecture",
+      "Off-grid capable energy systems with solar and battery backup",
+      "Nature-integrated design preserving Alberta's natural landscape",
+      "Community amenities including trails, gathering spaces, and gardens",
+    ],
   },
   {
     title: "AHI Calgary",
@@ -38,7 +72,14 @@ const projects = [
     category: "Smart Infrastructure",
     image: "https://www.havenz.ai/wp-content/uploads/2024/04/AHI-CALGARY–HAVENZ-SMART-MOBILITYm.png",
     desc: "A 7.9-acre smart mobility and energy hub strategically located in Calgary, featuring on-site EV charging and district energy systems.",
-    link: "https://www.havenz.ai/portfolio/ahi-calgary-havenz-smart-mobility-and-energy-hub/",
+    location: "Calgary, AB",
+    details: [
+      "7.9-acre strategic urban site in Calgary's innovation corridor",
+      "On-site EV charging infrastructure with fast and ultra-fast stations",
+      "District energy systems providing clean heating and cooling",
+      "Smart mobility integration with transit and micro-mobility networks",
+      "Mixed-use commercial and innovation spaces",
+    ],
   },
   {
     title: "AHI Fort McMurray",
@@ -46,7 +87,13 @@ const projects = [
     category: "Mixed Use",
     image: "https://www.havenz.ai/wp-content/uploads/2024/04/AHI-FORT-MCMURRAY-m.png",
     desc: "A green lifestyle and trade center bringing sustainable commerce and community living to Fort McMurray's evolving landscape.",
-    link: "https://www.havenz.ai/portfolio/ahi-fort-mcmurray-havenz-green-lifestyle-and-trade-center/",
+    location: "Fort McMurray, AB",
+    details: [
+      "Green lifestyle centre with sustainable retail and dining",
+      "Trade and commerce spaces supporting local entrepreneurship",
+      "Community living integrated with green infrastructure",
+      "Energy-efficient building systems exceeding code requirements",
+    ],
   },
   {
     title: "RISE Headquarters",
@@ -54,7 +101,13 @@ const projects = [
     category: "Commercial",
     image: "https://www.havenz.ai/wp-content/uploads/2024/04/rise-hadquarter-02.png",
     desc: "A state-of-the-art headquarters designed for innovation, collaboration, and sustainable enterprise operations.",
-    link: "https://www.havenz.ai/portfolio/rise-headquarters/",
+    location: "Alberta, Canada",
+    details: [
+      "State-of-the-art commercial headquarters for innovation-driven enterprises",
+      "Collaborative workspace design with flexible floor plans",
+      "Sustainable building systems with net-zero operational targets",
+      "Advanced digital infrastructure for smart building operations",
+    ],
   },
 ];
 
@@ -71,7 +124,65 @@ const heroChild = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
+function ProjectModalContent({ project, onClose }: { project: Project; onClose: () => void }) {
+  return (
+    <div className="flex flex-col">
+      {/* Image */}
+      <div className="relative aspect-[16/9] overflow-hidden rounded-t-lg">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover"
+        />
+        <span className="absolute top-4 left-4 px-3 py-1 bg-accent/10 backdrop-blur-sm text-accent text-xs font-body font-semibold rounded-full border border-accent/20">
+          {project.category}
+        </span>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 space-y-4">
+        <div>
+          <h3 className="text-2xl font-heading font-bold text-foreground">{project.title}</h3>
+          <p className="text-sm font-heading font-medium text-accent/80 mt-1">{project.subtitle}</p>
+        </div>
+
+        <div className="flex items-center gap-1.5 text-sm font-body text-muted-foreground">
+          <MapPin size={14} className="text-accent shrink-0" />
+          {project.location}
+        </div>
+
+        <p className="text-sm font-body text-muted-foreground leading-relaxed">
+          {project.desc}
+        </p>
+
+        {/* Details */}
+        <div className="pt-2 space-y-2.5">
+          <p className="text-xs font-body uppercase tracking-[0.2em] text-accent font-semibold">Key Features</p>
+          {project.details.map((detail) => (
+            <div key={detail} className="flex items-start gap-2.5">
+              <CheckCircle2 size={14} className="text-accent shrink-0 mt-0.5" />
+              <span className="text-sm font-body text-muted-foreground leading-relaxed">{detail}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="pt-4">
+          <Link to="/contact" onClick={onClose}>
+            <Button className="bg-gradient-brand text-accent-foreground hover:opacity-90 font-body text-sm tracking-wide rounded-full px-8 h-10 shadow-lg shadow-accent/20 w-full sm:w-auto">
+              Contact Us About This Project <ArrowRight className="ml-2" size={14} />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const isMobile = useIsMobile();
+
   return (
     <PageTransition>
       <div className="min-h-screen bg-background">
@@ -87,7 +198,7 @@ const Projects = () => {
           <motion.div
             animate={{ y: [-15, 15, -15], rotate: [0, 3, 0] }}
             transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/3 right-[12%] w-[200px] h-[200px] border border-havenz-teal/8 rounded-full"
+            className="absolute top-1/3 right-[12%] w-[200px] h-[200px] border border-havenz-teal/8 rounded-full hidden sm:block"
           />
           <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <motion.div variants={heroStagger} initial="hidden" animate="visible">
@@ -110,13 +221,11 @@ const Projects = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, i) => (
                 <ScrollReveal key={project.title} delay={i * 0.08}>
-                  <motion.a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <motion.div
+                    onClick={() => setSelectedProject(project)}
                     whileHover={{ y: -8 }}
                     transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                    className="group block rounded-2xl overflow-hidden bg-card border border-border hover:border-accent/20 hover:shadow-2xl hover:shadow-accent/5 transition-colors duration-500"
+                    className="group block rounded-2xl overflow-hidden bg-card border border-border hover:border-accent/20 hover:shadow-2xl hover:shadow-accent/5 transition-colors duration-500 cursor-pointer"
                   >
                     {/* Image */}
                     <div className="relative aspect-[3/2] overflow-hidden">
@@ -144,15 +253,44 @@ const Projects = () => {
                         {project.desc}
                       </p>
                       <span className="inline-flex items-center gap-1.5 text-xs font-body font-medium text-accent group-hover:gap-2.5 transition-all duration-300">
-                        View Project <ArrowUpRight size={14} />
+                        View Details <ArrowUpRight size={14} />
                       </span>
                     </div>
-                  </motion.a>
+                  </motion.div>
                 </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Project Modal - Desktop: Dialog, Mobile: Drawer */}
+        {isMobile ? (
+          <Drawer open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+            <DrawerContent className="max-h-[90vh]">
+              <DrawerHeader className="sr-only">
+                <DrawerTitle>{selectedProject?.title}</DrawerTitle>
+                <DrawerDescription>{selectedProject?.subtitle}</DrawerDescription>
+              </DrawerHeader>
+              <div className="overflow-y-auto">
+                {selectedProject && (
+                  <ProjectModalContent project={selectedProject} onClose={() => setSelectedProject(null)} />
+                )}
+              </div>
+            </DrawerContent>
+          </Drawer>
+        ) : (
+          <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+            <DialogContent className="max-w-2xl p-0 overflow-hidden bg-card border-border gap-0 max-h-[90vh] overflow-y-auto">
+              <DialogHeader className="sr-only">
+                <DialogTitle>{selectedProject?.title}</DialogTitle>
+                <DialogDescription>{selectedProject?.subtitle}</DialogDescription>
+              </DialogHeader>
+              {selectedProject && (
+                <ProjectModalContent project={selectedProject} onClose={() => setSelectedProject(null)} />
+              )}
+            </DialogContent>
+          </Dialog>
+        )}
 
         {/* CTA */}
         <section className="relative py-32 bg-havenz-navy overflow-hidden">
@@ -160,7 +298,7 @@ const Projects = () => {
           <motion.div
             animate={{ scale: [1, 1.05, 1], opacity: [0.03, 0.06, 0.03] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-havenz-teal"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-havenz-teal hidden sm:block"
           />
           <div className="mx-auto max-w-4xl px-6 text-center relative z-10">
             <ScrollReveal>
