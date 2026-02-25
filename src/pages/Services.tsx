@@ -94,12 +94,12 @@ const Services = () => {
           <motion.div
             animate={{ y: [-12, 12, -12], rotate: [0, -4, 0] }}
             transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 right-[10%] w-[180px] h-[180px] border border-havenz-teal/8 rounded-full"
+            className="absolute top-1/4 right-[10%] w-[180px] h-[180px] border border-havenz-teal/8 rounded-full hidden sm:block"
           />
           <motion.div
             animate={{ scale: [1, 1.08, 1], opacity: [0.04, 0.08, 0.04] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-1/3 left-[15%] w-[300px] h-[300px] rounded-full bg-havenz-teal"
+            className="absolute bottom-1/3 left-[15%] w-[300px] h-[300px] rounded-full bg-havenz-teal hidden sm:block"
           />
           <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <motion.div variants={heroStagger} initial="hidden" animate="visible">
@@ -208,7 +208,7 @@ const Services = () => {
           <motion.div
             animate={{ y: [-8, 8, -8], rotate: [0, 2, 0] }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute bottom-[10%] right-[8%] w-[220px] h-[220px] border border-havenz-teal/5 rounded-full"
+            className="absolute bottom-[10%] right-[8%] w-[220px] h-[220px] border border-havenz-teal/5 rounded-full hidden sm:block"
           />
           <div className="mx-auto max-w-6xl px-6 lg:px-8 relative z-10">
             <ScrollReveal>

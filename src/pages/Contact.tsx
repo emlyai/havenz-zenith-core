@@ -61,9 +61,9 @@ const Contact = () => {
         {/* Hero */}
         <section className="relative pt-16 min-h-[50vh] flex items-center bg-havenz-navy overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_hsl(173_58%_39%_/_0.06)_0%,_transparent_60%)]" />
-          {/* Stars */}
-          <div className="absolute inset-0 overflow-hidden">
-            {Array.from({ length: 40 }).map((_, i) => (
+          {/* Stars - reduced count for performance */}
+          <div className="absolute inset-0 overflow-hidden hidden sm:block">
+            {Array.from({ length: 20 }).map((_, i) => (
               <motion.div
                 key={i}
                 animate={{ opacity: [0.1, 0.5, 0.1] }}
@@ -77,7 +77,7 @@ const Contact = () => {
           <motion.div
             animate={{ y: [-10, 10, -10], rotate: [0, 5, 0] }}
             transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/3 right-[8%] w-[160px] h-[160px] border border-havenz-teal/6 rounded-full"
+            className="absolute top-1/3 right-[8%] w-[160px] h-[160px] border border-havenz-teal/6 rounded-full hidden sm:block"
           />
           <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 lg:px-8">
             <motion.div variants={heroStagger} initial="hidden" animate="visible">
@@ -116,7 +116,7 @@ const Contact = () => {
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
                     >
                       <p className="text-xs font-body uppercase tracking-[0.15em] text-muted-foreground mb-2">Call Us</p>
-                      <a href="tel:+14038307209" className="text-2xl font-heading font-bold text-foreground hover:text-accent transition-colors flex items-center gap-2 group">
+                      <a href="tel:+14038307209" className="text-xl sm:text-2xl font-heading font-bold text-foreground hover:text-accent transition-colors flex items-center gap-2 group break-all sm:break-normal">
                         +1 (403) 830-7209
                         <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 text-accent transition-opacity" />
                       </a>
