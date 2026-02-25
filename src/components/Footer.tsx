@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
-import havenzLogo from "@/assets/havenz-logo-clean.png";
+import { HavenzLogo } from "@/components/HavenzLogo";
 
 const offices = [
   {
@@ -45,7 +45,9 @@ export function Footer() {
         >
           {/* Brand column */}
           <motion.div variants={footerChild} className="lg:col-span-4">
-            <img src={havenzLogo} alt="Havenz Smart Communities" className="h-12 w-auto mb-6" />
+            <div className="mb-6">
+              <HavenzLogo size="lg" />
+            </div>
             <p className="text-sm font-body text-primary-foreground/50 leading-relaxed max-w-xs">
               Pioneering the next generation of smart living — communities that balance energy, data, food, and job security.
             </p>
