@@ -81,24 +81,36 @@ const About = () => {
 
         {/* Story */}
         <section className="section-padding bg-background">
-          <div className="mx-auto max-w-5xl">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-              <div className="lg:col-span-4">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+              <div className="lg:col-span-5">
                 <ScrollReveal>
                   <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5">Our Story</p>
-                  <h2 className="text-3xl font-heading font-bold text-foreground">More Than Real Estate</h2>
-                </ScrollReveal>
-              </div>
-              <div className="lg:col-span-8">
-                <ScrollReveal delay={0.15}>
+                  <h2 className="text-3xl font-heading font-bold text-foreground mb-6">More Than Real Estate</h2>
                   <div className="space-y-5 text-muted-foreground font-body leading-relaxed">
                     <p>
                       At Havenz Smart Communities, we are revolutionizing the industry by spearheading projects that prioritize sustainability and innovation. Our approach is rooted in creating ESG+R compliant, data-driven, and template-based smart communities.
                     </p>
                     <p>
-                      We specialize across all asset classes, with a core focus on food security, energy sustainability, data integrity, and job stability. Aligned with global Scope 1, 2, 3 mandates, we develop projects that set new benchmarks for environmental responsibility.
+                      We specialize across all asset classes, with a core focus on food security, energy sustainability, data integrity, and job stability.
                     </p>
                   </div>
+                </ScrollReveal>
+              </div>
+              <div className="lg:col-span-7">
+                <ScrollReveal delay={0.2}>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="rounded-2xl overflow-hidden border border-border shadow-xl"
+                  >
+                    <img
+                      src="https://www.havenz.ai/wp-content/uploads/2024/05/Enscape_1-min.png"
+                      alt="AHI Red Deer Campus"
+                      loading="lazy"
+                      className="w-full h-auto object-cover"
+                    />
+                  </motion.div>
                 </ScrollReveal>
               </div>
             </div>
@@ -198,19 +210,14 @@ const About = () => {
                   <motion.div
                     whileHover={{ scale: 1.02, rotate: 1 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="aspect-square rounded-3xl bg-gradient-to-br from-accent/5 via-secondary to-havenz-teal-light flex items-center justify-center p-12 border border-border"
+                    className="rounded-2xl overflow-hidden border border-border shadow-xl"
                   >
-                    <div className="text-center">
-                      <motion.div
-                        animate={{ y: [-5, 5, -5] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="w-20 h-20 rounded-2xl bg-gradient-brand flex items-center justify-center mx-auto mb-4 shadow-lg shadow-accent/20"
-                      >
-                        <span className="text-2xl font-heading font-bold text-accent-foreground">⚡</span>
-                      </motion.div>
-                      <p className="font-heading text-lg font-bold text-foreground">Clean Energy</p>
-                      <p className="font-body text-xs text-muted-foreground mt-1">Infrastructure Partnership</p>
-                    </div>
+                    <img
+                      src="https://www.havenz.ai/wp-content/uploads/2024/04/image-london-c.jpg"
+                      alt="Havenz Sustainable Energy Centre - Langdon"
+                      loading="lazy"
+                      className="w-full h-auto object-cover"
+                    />
                   </motion.div>
                 </ScrollReveal>
               </div>

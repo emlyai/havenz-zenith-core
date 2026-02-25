@@ -252,63 +252,112 @@ const Index = () => {
             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-[15%] left-[5%] w-[200px] h-[200px] border border-havenz-teal/5 rounded-full"
           />
-          <div className="mx-auto max-w-5xl px-6 lg:px-8 relative z-10">
-            <ScrollReveal>
-              <div className="text-center">
-                <p className="text-xs font-body uppercase tracking-[0.25em] text-havenz-teal mb-5">Flagship Project</p>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-[1.1] mb-6">
-                  AHI Red Deer
-                </h2>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                  className="text-xl font-heading text-havenz-teal mb-6"
+          <div className="mx-auto max-w-6xl px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <ScrollReveal>
+                <div>
+                  <p className="text-xs font-body uppercase tracking-[0.25em] text-havenz-teal mb-5">Flagship Project</p>
+                  <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary-foreground leading-[1.1] mb-6">
+                    AHI Red Deer
+                  </h2>
+                  <p className="text-xl font-heading text-havenz-teal mb-4">
+                    Sustainable Innovation Campus
+                  </p>
+                  <p className="text-primary-foreground/50 font-body leading-relaxed mb-8">
+                    A groundbreaking smart campus integrating clean energy, digital connectivity, and sustainable living — setting new standards for AI-powered communities in Alberta.
+                  </p>
+                  <Link to="/projects">
+                    <Button className="bg-gradient-brand text-accent-foreground hover:opacity-90 font-body text-sm tracking-wide rounded-full px-10 h-12 shadow-xl shadow-accent/20">
+                      View All Projects
+                    </Button>
+                  </Link>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={0.2}>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="rounded-2xl overflow-hidden border border-primary-foreground/10 shadow-2xl"
                 >
-                  Sustainable Innovation Campus
-                </motion.p>
-                <p className="text-primary-foreground/50 font-body max-w-2xl mx-auto leading-relaxed mb-10">
-                  A groundbreaking smart campus integrating clean energy, digital connectivity, and sustainable living — setting new standards for AI-powered communities in Alberta.
-                </p>
-                <Link to="/about">
-                  <Button className="bg-gradient-brand text-accent-foreground hover:opacity-90 font-body text-sm tracking-wide rounded-full px-10 h-12 shadow-xl shadow-accent/20">
-                    Discover More
-                  </Button>
-                </Link>
-              </div>
-            </ScrollReveal>
+                  <img
+                    src="https://www.havenz.ai/wp-content/uploads/2024/05/Enscape_1-min.png"
+                    alt="AHI Red Deer Sustainable Innovation Campus"
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                </motion.div>
+              </ScrollReveal>
+            </div>
           </div>
         </section>
 
-        {/* ═══════════════════ DISCOVER OUR STORY ═══════════════════ */}
+        {/* ═══════════════════ LATEST PROJECTS ═══════════════════ */}
         <section className="section-padding bg-background">
-          <div className="mx-auto max-w-5xl">
+          <div className="mx-auto max-w-6xl">
             <ScrollReveal>
-              <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5">About Havenz</p>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-12">
-                Discover Our Story
-              </h2>
+              <div className="flex items-end justify-between mb-12">
+                <div>
+                  <p className="text-xs font-body uppercase tracking-[0.25em] text-accent mb-5">Portfolio</p>
+                  <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
+                    Latest Projects
+                  </h2>
+                </div>
+                <Link to="/projects" className="hidden md:inline-flex items-center gap-2 text-sm font-body font-medium text-accent hover:gap-3 transition-all duration-300">
+                  View all projects <ArrowUpRight size={16} />
+                </Link>
+              </div>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
-                { title: "What We Do", content: "We transform real estate and infrastructure through data-driven, AI-enhanced, and energy-resilient development models across all asset classes." },
-                { title: "Our Mission", content: "To disrupt traditional development by building AI-powered, energy-efficient, and data-centric communities — scalable and aligned with the circular economy." },
-                { title: "Our Vision", content: "To pioneer the next generation of smart living — communities that balance energy, data, food, and job security for future-ready cities." },
-              ].map((item, i) => (
-                <ScrollReveal key={item.title} delay={i * 0.12}>
-                  <motion.div
-                    whileHover={{ y: -6, scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                    className="p-8 rounded-2xl bg-secondary/50 border border-border h-full hover:border-accent/20 hover:shadow-lg hover:shadow-accent/5 transition-colors duration-500"
-                  >
-                    <h3 className="text-lg font-heading font-semibold text-foreground mb-4">{item.title}</h3>
-                    <p className="text-sm font-body text-muted-foreground leading-relaxed">{item.content}</p>
-                  </motion.div>
+                {
+                  title: "Sustainable Energy Centre",
+                  category: "Data Centre & Transport Hub",
+                  image: "https://www.havenz.ai/wp-content/uploads/2024/04/image-london-c.jpg",
+                },
+                {
+                  title: "Moon Haven",
+                  category: "Sustainable Living",
+                  image: "https://www.havenz.ai/wp-content/uploads/2024/04/moon-haven-c.png",
+                },
+                {
+                  title: "AHI Calgary",
+                  category: "Smart Infrastructure",
+                  image: "https://www.havenz.ai/wp-content/uploads/2024/04/AHI-CALGARY–HAVENZ-SMART-MOBILITYm.png",
+                },
+              ].map((project, i) => (
+                <ScrollReveal key={project.title} delay={i * 0.1}>
+                  <Link to="/projects">
+                    <motion.div
+                      whileHover={{ y: -6 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      className="group rounded-2xl overflow-hidden bg-card border border-border hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 transition-colors duration-500"
+                    >
+                      <div className="relative aspect-[3/2] overflow-hidden">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <span className="absolute top-3 left-3 px-3 py-1 bg-accent/10 backdrop-blur-sm text-accent text-xs font-body font-semibold rounded-full border border-accent/20">
+                          {project.category}
+                        </span>
+                      </div>
+                      <div className="p-5">
+                        <h3 className="text-base font-heading font-semibold text-foreground group-hover:text-accent transition-colors duration-300">
+                          {project.title}
+                        </h3>
+                      </div>
+                    </motion.div>
+                  </Link>
                 </ScrollReveal>
               ))}
             </div>
+
+            <Link to="/projects" className="md:hidden inline-flex items-center gap-2 text-sm font-body font-medium text-accent mt-8 hover:gap-3 transition-all duration-300">
+              View all projects <ArrowUpRight size={16} />
+            </Link>
           </div>
         </section>
 
